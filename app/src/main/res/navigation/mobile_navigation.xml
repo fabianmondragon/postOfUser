@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="ingfabian.userpost.presentation.ui.login.home.HomeFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_register"
+        android:name="ingfabian.userpost.presentation.ui.login.notifications.RegistrationFragment"
+        android:label="registation"
+        tools:layout="@layout/fragment_register" />
+
+    <fragment
+        android:id="@+id/navigation_password"
+        android:name="ingfabian.userpost.presentation.ui.login.dashboard.PasswordFragment"
+        android:label="Recovery Password"
+        tools:layout="@layout/fragment_password" />
+
+
+</navigation>
