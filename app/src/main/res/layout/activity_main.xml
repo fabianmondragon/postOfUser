@@ -47,7 +47,6 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:onTextChanged="@{postViewModel::validateLimitCharacters}"
                 android:text="@={postViewModel.editTextDescription}"
                 android:layout_height="wrap_content" />
 

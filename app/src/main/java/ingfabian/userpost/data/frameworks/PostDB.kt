@@ -14,12 +14,27 @@ import androidx.room.PrimaryKey
             onDelete = ForeignKey.CASCADE))
     )
 
-data class PostDB (
+ class PostDB ()
+{
+    @PrimaryKey(autoGenerate = true)
+    var postDBId: Int = -1
 
-    @PrimaryKey (autoGenerate = true)
-    val postDBId: Int,
-    @ColumnInfo(name = "title") val firstName: String?,
-    @ColumnInfo(name = "description") val lastName: String?,
-    @ColumnInfo (name = "fk_user") val userId: Int
-)
+    @ColumnInfo(name = "title")
+    var title: String = ""
+
+    @ColumnInfo(name = "description")
+    var description: String = ""
+
+    @ColumnInfo(name = "fk_user")
+    var userId: Int = -1
+
+    constructor( title:String, description: String, fk_user: Int): this (){
+        this.title = title
+        this.description = description
+        this.userId = fk_user
+    }
+
+}
+
+
 

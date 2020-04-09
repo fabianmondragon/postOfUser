@@ -1,16 +1,20 @@
 package ingfabian.userpost.data
 
 import android.content.Context
-import ingfabian.userpost.data.datasource.LocalDataSourceUser
+import ingfabian.core.datasource.LocalDataSourceUser
+import ingfabian.core.usecases.entity.UserEntity
 import ingfabian.userpost.data.frameworks.DataBasePost
-import ingfabian.userpost.data.frameworks.UserDB
 
 class RoomUser (context: Context): LocalDataSourceUser{
 
+    lateinit var mapperPostData: MapperPostData
     val userDao = DataBasePost.getInstance(context).userDBDAO()
 
-    override fun addUser(userDB: UserDB):Long {
-        return userDao.addUser(userDB)
+    override fun addUser(userEntity: UserEntity):Long {
+        mapperPostData = MapperPostData()
+        var userDB = mapperPostData.convertUserFromDomainToDB(userEntity)
+        var l=  userDao.addUser(userDB)
+        return l
     }
 
     override fun getUser(uderId: Int) {

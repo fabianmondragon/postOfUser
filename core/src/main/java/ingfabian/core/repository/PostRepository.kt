@@ -4,7 +4,7 @@ import ingfabian.core.usecases.entity.PostEntity
 
 interface
 PostRepository {
-    suspend fun getPostByUser (userId: Int) : List<PostEntity>
+    suspend fun getPostByUser (userId: Int) : List<PostEntity>?
 
-    suspend fun addPost ( userId:Int, post: PostEntity): Boolean
+    suspend fun addPost ( userId:Int, post: PostEntity): Long
 }

@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_register"
-        android:name="ingfabian.userpost.presentation.ui.login.notifications.RegistrationFragment"
+        android:name="ingfabian.userpost.presentation.ui.login.registration.RegistrationFragment"
         android:label="registation"
         tools:layout="@layout/fragment_register" />
 

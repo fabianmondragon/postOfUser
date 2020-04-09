@@ -3,12 +3,12 @@ package ingfabian.userpost.presentation
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import ingfabian.core.repository.PostRepositoryImpl
 import ingfabian.core.usecases.AddPost
 import ingfabian.core.usecases.GetAllPost
 import ingfabian.core.usecases.entity.PostEntity
 import ingfabian.core.usecases.entity.UserEntity
 import ingfabian.userpost.data.RoomPost
-import ingfabian.userpost.data.repository.PostRepositoryImpl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

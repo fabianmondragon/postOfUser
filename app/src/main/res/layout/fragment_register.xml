@@ -5,7 +5,7 @@
     <data>
         <variable
             name="registrationViewMode"
-            type="ingfabian.userpost.presentation.ui.login.notifications.RegistrationViewModel" />
+            type="ingfabian.userpost.presentation.ui.login.registration.RegistrationViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,6 +27,8 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
+                app:error="@{registrationViewMode.userPresentation.nameError}"
+                app:errorEnabled="true"
                 android:hint="Enter name">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -34,7 +36,9 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    android:text="@={registrationViewMode.mutableUser.name}"
+                    android:onTextChanged="@{registrationViewMode::onNameTextChange}"
+                    android:text="@={registrationViewMode.userPresentation.name}"
+
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -45,6 +49,8 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
+                app:errorEnabled="true"
+                app:error="@{registrationViewMode.userPresentation.userNameError}"
                 android:hint="Enter user name">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -52,7 +58,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    android:text="@={registrationViewMode.mutableUser.userName}"
+                    android:text="@={registrationViewMode.userPresentation.userName}"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -63,17 +69,18 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-
+                app:errorEnabled="true"
+                app:error="@{registrationViewMode.userPresentation.ageError}"
                 android:hint="Enter date of bird">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintRight_toRightOf="parent"
+                    android:text='@{registrationViewMode.userPresentation.age != 0 ? Integer.toString(registrationViewMode.userPresentation.age): ""}'
                     app:layout_constraintLeft_toLeftOf="parent"
-                    android:inputType="date"
-                    android:text="@{Integer.toString(registrationViewMode.mutableUser.age)}"
-                    />
+                    app:layout_constraintRight_toRightOf="parent" />
+
+
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,19 +91,20 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-
+                app:error="@{registrationViewMode.userPresentation.passwordError}"
+                app:errorEnabled="true"
                 android:hint="Enter Password">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintRight_toRightOf="parent"
+                    android:inputType="textPassword"
+                    android:onTextChanged="@{registrationViewMode::onPasswordChange}"
+                    android:text="@={registrationViewMode.userPresentation.password}"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    android:text="@={registrationViewMode.mutableUser.password}"
-                    />
+                    app:layout_constraintRight_toRightOf="parent" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputPasswordAgain"
@@ -104,23 +112,29 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-
-                android:hint="Ingrese su usuario">
+                app:errorEnabled="true"
+                app:error="@{registrationViewMode.userPresentation.passwordAgainError}"
+                android:hint="Enter Password Again">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintRight_toRightOf="parent"
+                    android:inputType="textPassword"
+                    android:onTextChanged="@{registrationViewMode::onPasswordAgainChange}"
+                    android:text="@={registrationViewMode.userPresentation.passwordAgain}"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    />
+                    app:layout_constraintRight_toRightOf="parent" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="@{() -> registrationViewMode.register()}"
                 android:text="Registrar">
+
 
             </com.google.android.material.button.MaterialButton>
 
