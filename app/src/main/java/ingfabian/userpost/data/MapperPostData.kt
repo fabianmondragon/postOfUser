@@ -16,5 +16,11 @@ class MapperPostData {
         return  PostDB (postEntity.title, postEntity.description, userId)
     }
 
+    fun converUserFromDBToDamin (userDB: UserDB): UserEntity{
+        return UserEntity (userDB.userDBId, userDB.firstName
+        , userDB.userName,userDB.age, userDB.password)
+
+    }
+
 
 }

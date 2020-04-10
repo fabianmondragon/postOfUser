@@ -19,13 +19,6 @@ class UserPresentation {
     val password = ObservableField<String>()
     val passwordAgain = ObservableField<String> ()
 
-    fun validateField (userPresentation: UserPresentation){
-
-        if (userPresentation.name.get().equals("")){
-
-        }
-
-    }
 
     fun validatePassword (s: CharSequence, userPresentation: UserPresentation){
         val regex = Regex("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$")
@@ -86,4 +79,5 @@ class UserPresentation {
         }
         return true
     }
+
 }

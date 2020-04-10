@@ -6,9 +6,20 @@ import ingfabian.core.usecases.entity.UserEntity
 import ingfabian.userpost.data.frameworks.DataBasePost
 
 class RoomUser (context: Context): LocalDataSourceUser{
-
     lateinit var mapperPostData: MapperPostData
     val userDao = DataBasePost.getInstance(context).userDBDAO()
+
+
+    override fun getUser(userName: String, password: String): UserEntity? {
+        mapperPostData = MapperPostData()
+        val userdb= userDao.getUser(userName, password)
+        userdb?.let {
+            return mapperPostData.converUserFromDBToDamin(it)
+        }
+        return null
+    }
+
+
 
     override fun addUser(userEntity: UserEntity):Long {
         mapperPostData = MapperPostData()

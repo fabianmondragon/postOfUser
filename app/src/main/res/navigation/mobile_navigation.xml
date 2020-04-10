@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="ingfabian.userpost.presentation.ui.login.home.HomeFragment"
+        android:name="ingfabian.userpost.presentation.ui.login.login.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_home" />
 

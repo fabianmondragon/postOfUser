@@ -8,5 +8,7 @@ interface LocalDataSourceUser {
 
     fun getUser (uderId: Int)
 
+    fun getUser (userName: String, password: String):UserEntity?
+
 
 }
