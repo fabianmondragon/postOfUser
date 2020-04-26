@@ -1,4 +1,4 @@
-package ingfabian.userpost.presentation
+package ingfabian.userpost.presentation.ui.post
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ingfabian.core.usecases.entity.PostEntity
 import ingfabian.userpost.R
 import ingfabian.userpost.databinding.ActivityPostBinding
+import ingfabian.userpost.presentation.ConstantPresentation
+import ingfabian.userpost.presentation.MainActivity
 import kotlinx.android.synthetic.main.activity_post.*
 
 class PostActivity : AppCompatActivity() {

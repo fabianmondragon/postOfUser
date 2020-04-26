@@ -1,7 +1,6 @@
 package ingfabian.userpost.presentation.ui.login.registration
 
 import android.app.Application
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import ingfabian.core.repository.UserRepositoryImpl
@@ -9,6 +8,7 @@ import ingfabian.core.usecases.AddUser
 import ingfabian.userpost.data.RoomUser
 import ingfabian.userpost.presentation.ConstantPresentation
 import ingfabian.userpost.presentation.MapperPostPresentation
+import ingfabian.userpost.presentation.ui.login.model.RespondPresentation
 import ingfabian.userpost.presentation.ui.login.model.UserPresentation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,7 +24,7 @@ class RegistrationViewModel (application: Application) : AndroidViewModel(applic
     )
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
 
-    val result = MutableLiveData<Long>()
+    val result = MutableLiveData<RespondPresentation>()
 
     fun register (){
 
@@ -33,10 +33,13 @@ class RegistrationViewModel (application: Application) : AndroidViewModel(applic
                 val userEntity =
                     mapperPostPresentation.convertUserFromPresentationToDomain(userPresentation)
                 val l = addUser.addUser(userEntity)
-                result.postValue(l)
+                if (l != -1L ){
+                    result.postValue(RespondPresentation(ConstantPresentation.LOGIN_TRANSACTION_MSG_SUCCESS, ConstantPresentation.RESULT_SUCCESS_TRANSACTION,ConstantPresentation.LOGIN_TRANSACTION))
+                } else {
+                    result.postValue(RespondPresentation(ConstantPresentation.LOGIN_TRANSACTION_MSG_ERROR, ConstantPresentation.RESULT_SUCCESS_TRANSACTION,ConstantPresentation.LOGIN_TRANSACTION))
+                }
+
             }
-        }else {
-            Toast.makeText(getApplication(), ConstantPresentation.EMPTY_FIELD, Toast.LENGTH_LONG).show()
         }
     }
 

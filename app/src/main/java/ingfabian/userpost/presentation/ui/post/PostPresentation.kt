@@ -1,4 +1,4 @@
-package ingfabian.userpost.presentation
+package ingfabian.userpost.presentation.ui.post
 
 data class PostPresentation (
     val title: String,

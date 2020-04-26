@@ -1,4 +1,4 @@
-package ingfabian.userpost.presentation
+package ingfabian.userpost.presentation.ui.post
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -9,6 +9,8 @@ import ingfabian.core.usecases.GetAllPost
 import ingfabian.core.usecases.entity.PostEntity
 import ingfabian.core.usecases.entity.UserEntity
 import ingfabian.userpost.data.RoomPost
+import ingfabian.userpost.presentation.ConstantPresentation
+import ingfabian.userpost.presentation.Validations
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,7 +29,7 @@ class PostViewModel (application: Application) : AndroidViewModel (application) 
         RoomPost(application)
     )
     )
-    val validations=  Validations()
+    val validations= Validations()
     val editTextDescription = MutableLiveData<String> ()
     val editTextTitle = MutableLiveData<String> ()
     private val coroutineScope = CoroutineScope(Dispatchers.IO)

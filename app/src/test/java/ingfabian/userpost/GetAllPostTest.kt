@@ -25,7 +25,7 @@ class GetAllPostTest {
         //Arrange
         var listOfPostUser: ArrayList<PostEntity>? = null
         val getAllPost= GetAllPost (getAllPostRepository)
-        var userEntity = UserEntity(1, "Fabian", 18)
+        var userEntity = UserEntity(1, "Fabian", "",18, "")
         var listPost = ArrayList<PostEntity>()
         listPost.add(PostEntity("Title1", "Descripcion1", 1))
         listPost.add(PostEntity("Title2", "Descripcion2", 1))
@@ -49,7 +49,7 @@ class GetAllPostTest {
         //Arrange
         var listOfPostUser: ArrayList<PostEntity>? = null
         val getAllPost= GetAllPost (getAllPostRepository)
-        var userEntity = UserEntity(2, "Fabian", 18)
+        var userEntity = UserEntity(1, "Fabian", "",18, "")
         var listPost = ArrayList<PostEntity>()
         listPost.add(PostEntity("Title1", "Descripcion1", 1))
         listPost.add(PostEntity("Title2", "Descripcion2", 1))

@@ -26,14 +26,14 @@ class AddPostTest {
     @Test
     fun AddPostTest_OneValidEntry_Success (){
         //Arrange
-        var userEntity = UserEntity(1, "Fabian", 18)
+        var userEntity = UserEntity(1, "Fabian", "",18, "")
         var result : Boolean = false
         val addPost = AddPost (postRepository)
         val postEntity = PostEntity("Hola a todos", "Description", 1)
 
         //Act
         runBlockingTest {
-            Mockito.`when`(postRepository.addPost(1, postEntity)).thenReturn(true)
+            Mockito.`when`(postRepository.addPost(1, postEntity)).thenReturn(1)
             result = addPost.addPost(userEntity, postEntity)
         }
 
@@ -44,7 +44,7 @@ class AddPostTest {
     @Test
     fun AddPostTest_InvalidDescriptionField_Fail (){
         //Arrange
-        var userEntity = UserEntity(1, "Fabian", 18)
+        var userEntity = UserEntity(1, "Fabian", "",18, "")
         var result : Boolean = false
         val addPost = AddPost (postRepository)
         val postEntity = PostEntity(
@@ -55,7 +55,7 @@ class AddPostTest {
 
         //Act
         runBlockingTest {
-            Mockito.`when`(postRepository.addPost(1, postEntity)).thenReturn(true)
+            Mockito.`when`(postRepository.addPost(1, postEntity)).thenReturn(1)
             result = addPost.addPost(userEntity, postEntity)
         }
 

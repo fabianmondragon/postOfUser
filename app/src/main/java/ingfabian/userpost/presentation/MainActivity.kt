@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import ingfabian.userpost.R
 import ingfabian.userpost.databinding.ActivityMainBinding
+import ingfabian.userpost.presentation.ui.post.PostViewModel
 
 class MainActivity : AppCompatActivity() {
 

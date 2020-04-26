@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import ingfabian.userpost.R
 import ingfabian.userpost.databinding.FragmentRegisterBinding
+import ingfabian.userpost.presentation.ConstantPresentation
 import ingfabian.userpost.presentation.ui.login.login.LoginFragment
 
 
@@ -35,14 +36,19 @@ class RegistrationFragment : Fragment() {
     @SuppressLint("ResourceType")
     fun setObserver (){
         registrationViewModel.result.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(this.context, "Registro exitoso", Toast.LENGTH_LONG).show()
-            val newFragment = LoginFragment()
-            val transaction = fragmentManager?.beginTransaction()?.apply {
+            if (it.code == ConstantPresentation.RESULT_SUCCESS_TRANSACTION){
+                Toast.makeText(this.context, it.msg, Toast.LENGTH_LONG).show()
+                val newFragment = LoginFragment()
+                val transaction = fragmentManager?.beginTransaction()?.apply {
 
-                replace(R.id.nav_host_fragment, newFragment)
-                addToBackStack(null)
+                    replace(R.id.nav_host_fragment, newFragment)
+                    addToBackStack(null)
+                }
+                transaction?.commit()
             }
-            transaction?.commit()
+            else {
+                Toast.makeText(this.context, it.msg, Toast.LENGTH_LONG).show()
+            }
         })
 
     }

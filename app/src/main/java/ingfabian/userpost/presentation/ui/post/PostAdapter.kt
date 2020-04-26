@@ -1,4 +1,4 @@
-package ingfabian.userpost.presentation
+package ingfabian.userpost.presentation.ui.post
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +10,7 @@ import ingfabian.userpost.R
 
 class PostAdapter (private var dataSet: ArrayList<PostEntity>) : RecyclerView.Adapter<PostAdapter.ViewHolderPost>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostAdapter.ViewHolderPost {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderPost {
         val viewHolderPost = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_post, parent, false) as TextView
         return ViewHolderPost(viewHolderPost)
@@ -20,7 +20,7 @@ class PostAdapter (private var dataSet: ArrayList<PostEntity>) : RecyclerView.Ad
         return dataSet.size
     }
 
-    override fun onBindViewHolder(holder: PostAdapter.ViewHolderPost, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolderPost, position: Int) {
         holder.textViewTitle.text = dataSet[position].title
         holder.textViewDescription.text = dataSet[position].description
     }
