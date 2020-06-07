@@ -80,4 +80,29 @@ class UserPresentation {
         return true
     }
 
+    private fun validaEmtpyFieldUserName (userPresentation: UserPresentation): Boolean{
+        if (userPresentation.userName.get()!!.isEmpty()){
+            userPresentation.userNameError.set(ConstantPresentation.EMPTY_FIELD)
+            return false
+        }
+        userPresentation.userNameError.set(ConstantPresentation.EMPTY_FIELD)
+        return true
+    }
+
+    private fun validaEmtpyFieldPassword (userPresentation: UserPresentation): Boolean{
+        if (userPresentation.userName.get()!!.isEmpty()){
+            userPresentation.userNameError.set(ConstantPresentation.EMPTY_FIELD)
+            return false
+        }
+        userPresentation.userNameError.set(ConstantPresentation.EMPTY_FIELD)
+        return true
+    }
+
+
+    fun validateEmptyFieldLogin (userPresentation: UserPresentation): Boolean{
+        return validaEmtpyFieldUserName(userPresentation) &&
+                validaEmtpyFieldPassword(userPresentation)
+
+    }
+
 }

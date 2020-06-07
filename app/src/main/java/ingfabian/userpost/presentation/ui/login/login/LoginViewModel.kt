@@ -28,7 +28,15 @@ class LoginViewModel (application: Application) : AndroidViewModel(application) 
     }
 
     fun login (){
-        var userEntity = userPresent.userName.get()?.let { userPresent.password.get()?.let { it1 -> UserEntity (  userName = it, password = it1) } }
+
+
+        var userEntity = userPresent.userName.get()?.let {
+            it->
+                userPresent.password.get()?.let { it1 ->
+                    UserEntity(userName = it, password = it1)
+
+            }
+        }
         coroutineScope.launch {
             userEntity?.let {
 

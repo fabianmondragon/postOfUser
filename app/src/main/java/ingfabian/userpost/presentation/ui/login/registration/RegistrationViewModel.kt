@@ -28,6 +28,7 @@ class RegistrationViewModel (application: Application) : AndroidViewModel(applic
 
     fun register (){
 
+
         if (userPresentation.validateEmptyField (userPresentation)) {
             coroutineScope.launch {
                 val userEntity =
@@ -40,6 +41,9 @@ class RegistrationViewModel (application: Application) : AndroidViewModel(applic
                 }
 
             }
+        }
+        else {
+
         }
     }
 
