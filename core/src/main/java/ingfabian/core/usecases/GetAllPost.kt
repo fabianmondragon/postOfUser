@@ -7,9 +7,9 @@ import ingfabian.core.usecases.entity.UserEntity
 class GetAllPost (val postRepository: PostRepository) {
 
     suspend fun getPostByUser (userEntity: UserEntity): List<PostEntity>? {
-        if (userEntity.age > 18 ){
+        /*if (userEntity.age > 18 ){
             return postRepository.getPostByUser (1)
-        }
+        }*/
         return null
     }
 

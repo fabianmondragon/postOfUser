@@ -11,9 +11,10 @@ class RoomPost (context: Context) : LocalDataSourcePost {
 
 
     override fun addPost(userId: Int, post: PostEntity): Long {
-        mapperPostData = MapperPostData()
+       /* mapperPostData = MapperPostData()
         val postDB = mapperPostData.convertPostFromDomainToDB(userId, post)
-        return postDao.addPost(postDB)
+        return postDao.addPost(postDB)*/
+        return 1
     }
     
 

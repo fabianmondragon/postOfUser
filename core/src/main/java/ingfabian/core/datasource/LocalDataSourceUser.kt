@@ -10,5 +10,7 @@ interface LocalDataSourceUser {
 
     fun getUser (userName: String, password: String):UserEntity?
 
+    fun isUserRegistered(userName: String, password: String): Boolean
+
 
 }

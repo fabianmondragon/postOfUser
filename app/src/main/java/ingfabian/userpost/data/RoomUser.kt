@@ -14,18 +14,21 @@ class RoomUser (context: Context): LocalDataSourceUser{
         mapperPostData = MapperPostData()
         val userdb= userDao.getUser(userName, password)
         userdb?.let {
-            return mapperPostData.converUserFromDBToDamin(it)
+           // return mapperPostData.converUserFromDBToDamin(it)
         }
         return null
     }
 
+    override fun isUserRegistered(userName: String, password: String): Boolean {
+        TODO("Not yet implemented")
+    }
 
 
     override fun addUser(userEntity: UserEntity):Long {
         mapperPostData = MapperPostData()
-        var userDB = mapperPostData.convertUserFromDomainToDB(userEntity)
-        var l=  userDao.addUser(userDB)
-        return l
+        //var userDB = mapperPostData.convertUserFromDomainToDB(userEntity)
+       // var l=  userDao.addUser(userDB)
+        return 1
     }
 
     override fun getUser(uderId: Int) {

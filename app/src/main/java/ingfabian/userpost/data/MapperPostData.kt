@@ -7,7 +7,7 @@ import ingfabian.userpost.data.frameworks.UserDB
 
 class MapperPostData {
 
-    fun convertUserFromDomainToDB (userEntity: UserEntity): UserDB{
+    /*fun convertUserFromDomainToDB (userEntity: UserEntity): UserDB{
         return  UserDB (userName = userEntity.userName, firstName = userEntity.name,
             password = userEntity.password, age = userEntity.age)
     }
@@ -20,7 +20,7 @@ class MapperPostData {
         return UserEntity (userDB.userDBId, userDB.firstName
         , userDB.userName,userDB.age, userDB.password)
 
-    }
+    }*/
 
 
 }

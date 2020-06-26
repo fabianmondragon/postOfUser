@@ -37,23 +37,23 @@ class PostViewModel (application: Application) : AndroidViewModel (application) 
 
 
     fun addPostByUser() {
-        val description = editTextDescription.value.toString()
-        val title = editTextTitle.value.toString()
-        if (validations.validateFielsdPost (title, description)){
-            val postEntity = PostEntity(title, description, 1)
-            val user = UserEntity(1, "Fabian", "mondra", 32, "gate")
-            coroutineScope.launch {
-                post.addPost(user, postEntity )
-            }
-        }
+//        val description = editTextDescription.value.toString()
+//        val title = editTextTitle.value.toString()
+//        if (validations.validateFielsdPost (title, description)){
+//            val postEntity = PostEntity(title, description, 1)
+//            val user = UserEntity(1, "Fabian", "mondra", 32, "gate")
+//            coroutineScope.launch {
+//                post.addPost(user, postEntity )
+//            }
+//        }
     }
 
     fun getAllUserPost() {
-        val user = UserEntity(1, "Fabian", "mondra", 32, "gate")
+       /* val user = UserEntity(1, "Fabian", "mondra", 32, "gate")
         coroutineScope.launch {
             var list = getAllUsesCase.getPostByUser (user)
             listPost.postValue(list)
-        }
+        }*/
 
     }
 

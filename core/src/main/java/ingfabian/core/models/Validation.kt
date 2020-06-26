@@ -9,7 +9,7 @@ class Validation {
     }
 
     private fun validationPost (user: UserEntity): Boolean{
-        return user.age > 18
+        return true
     }
 
     fun validateAgeAndTypePost (user: UserEntity, type: Int): Boolean{
