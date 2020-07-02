@@ -3,10 +3,10 @@ package ingfabian.userpost.presentation.ui.login.registration
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import ingfabian.userpost.repository.UserRepositoryImpl
+import com.example.data.repository.UserRepositoryImpl
 import ingfabian.core.usecases.AddUser
 import ingfabian.core.usecases.entity.UserEntity
-import ingfabian.userpost.data.RoomUser
+import com.example.data.RoomUser
 import ingfabian.userpost.presentation.ConstantPresentation
 import ingfabian.userpost.presentation.MapperPostPresentation
 import ingfabian.userpost.presentation.ui.login.model.RespondPresentation

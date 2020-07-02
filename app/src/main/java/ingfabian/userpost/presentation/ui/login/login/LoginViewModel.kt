@@ -3,14 +3,9 @@ package ingfabian.userpost.presentation.ui.login.login
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import ingfabian.core.usecases.Login
 import ingfabian.core.usecases.entity.UserEntity
-import ingfabian.userpost.data.RoomUser
-import ingfabian.userpost.network.UserApiHelper
-import ingfabian.userpost.network.UserServicee
+import com.example.data.RoomUser
 import ingfabian.userpost.presentation.ui.login.model.UserPresentation
-import ingfabian.userpost.repository.RemoteDataSourceImpl
-import ingfabian.userpost.repository.UserRepositoryImpl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

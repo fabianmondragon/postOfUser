@@ -1,4 +1,4 @@
-package ingfabian.userpost.data.frameworks
+package com.example.data.frameworks
 
 import android.content.Context
 import androidx.room.Database
@@ -17,12 +17,17 @@ abstract class DataBasePost : RoomDatabase() {
         private var instance: DataBasePost? = null
 
         private fun create(context: Context): DataBasePost =
-            Room.databaseBuilder(context, DataBasePost::class.java, DATABASE_NAME)
+            Room.databaseBuilder(context, DataBasePost::class.java,
+                DATABASE_NAME
+            )
                 .fallbackToDestructiveMigration()
                 .build()
 
         fun getInstance(context: Context): DataBasePost =
-            (instance ?: create(context)).also { instance = it }
+            (instance
+                ?: create(
+                    context
+                )).also { instance = it }
 
     }
 }

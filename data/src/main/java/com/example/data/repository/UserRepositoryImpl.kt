@@ -1,4 +1,4 @@
-package ingfabian.userpost.repository
+package com.example.data.repository
 
 import ingfabian.core.Result
 import ingfabian.core.datasource.LocalDataSourceUser
@@ -14,7 +14,8 @@ class UserRepositoryImpl : UserRepository {
 
     override suspend fun addUser(userEntity: UserEntity): Result<JWToken?> {
         val userApiHelper: UserApiHelper
-        remoteDataSource = RemoteDataSourceImpl(userApiHelper)
+        remoteDataSource =
+            RemoteDataSourceImpl(userApiHelper)
         val result = remoteDataSource.registerUser(userEntity)
         return when (result.status) {
             Result.Status.SUCCESS -> success(result.data)

@@ -1,17 +1,16 @@
-package ingfabian.userpost.data
+package com.example.data
 
-import android.content.Context
 import ingfabian.core.datasource.LocalDataSourceUser
 import ingfabian.core.usecases.entity.UserEntity
-import ingfabian.userpost.data.frameworks.DataBasePost
+import com.example.data.frameworks.DataBasePost
 
-class RoomUser (context: Context): LocalDataSourceUser{
-    lateinit var mapperPostData: MapperPostData
-    val userDao = DataBasePost.getInstance(context).userDBDAO()
+class RoomUser : LocalDataSourceUser{
+    lateinit var mapperPostData: com.example.data.MapperPostData
+    val userDao = com.example.data.frameworks.DataBasePost.getInstance(context).userDBDAO()
 
 
     override fun getUser(userName: String, password: String): UserEntity? {
-        mapperPostData = MapperPostData()
+        mapperPostData = com.example.data.MapperPostData()
         val userdb= userDao.getUser(userName, password)
         userdb?.let {
            // return mapperPostData.converUserFromDBToDamin(it)
@@ -25,7 +24,7 @@ class RoomUser (context: Context): LocalDataSourceUser{
 
 
     override fun addUser(userEntity: UserEntity):Long {
-        mapperPostData = MapperPostData()
+        mapperPostData = com.example.data.MapperPostData()
         //var userDB = mapperPostData.convertUserFromDomainToDB(userEntity)
        // var l=  userDao.addUser(userDB)
         return 1

@@ -1,4 +1,4 @@
-package ingfabian.userpost.data.frameworks
+package com.example.data.frameworks
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

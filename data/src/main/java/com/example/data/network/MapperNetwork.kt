@@ -1,4 +1,4 @@
-package ingfabian.userpost.network
+package com.example.data.network
 
 import android.service.autofill.UserData
 import com.google.gson.Gson

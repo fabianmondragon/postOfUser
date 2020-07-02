@@ -7,13 +7,11 @@ import ingfabian.core.repository.PostRepositoryImpl
 import ingfabian.core.usecases.AddPost
 import ingfabian.core.usecases.GetAllPost
 import ingfabian.core.usecases.entity.PostEntity
-import ingfabian.core.usecases.entity.UserEntity
-import ingfabian.userpost.data.RoomPost
+import com.example.data.RoomPost
 import ingfabian.userpost.presentation.ConstantPresentation
 import ingfabian.userpost.presentation.Validations
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class PostViewModel (application: Application) : AndroidViewModel (application) {
 
@@ -22,11 +20,11 @@ class PostViewModel (application: Application) : AndroidViewModel (application) 
     var goToView = MutableLiveData<Int>()
 
     val post =  AddPost (postRepository = PostRepositoryImpl(
-        RoomPost(application)
+        com.example.data.RoomPost(application)
     )
     )
     val getAllUsesCase = GetAllPost (postRepository = PostRepositoryImpl(
-        RoomPost(application)
+        com.example.data.RoomPost(application)
     )
     )
     val validations= Validations()

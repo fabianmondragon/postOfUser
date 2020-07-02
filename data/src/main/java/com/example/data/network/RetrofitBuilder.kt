@@ -1,4 +1,4 @@
-package ingfabian.userpost.network
+package com.example.data.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,5 +14,6 @@ object RetrofitBuilder {
             .build()
     }
 
-    val apiService: UserServicee = getRetrofit().create(UserServicee::class.java)
+    val apiService: UserServicee = getRetrofit()
+        .create(UserServicee::class.java)
 }

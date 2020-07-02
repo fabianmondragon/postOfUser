@@ -1,4 +1,4 @@
-package ingfabian.userpost.network
+package com.example.data.network
 
 import ingfabian.core.usecases.entity.UserEntity
 

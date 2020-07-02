@@ -1,9 +1,9 @@
-package ingfabian.userpost.data
+package com.example.data
 
 import ingfabian.core.usecases.entity.PostEntity
 import ingfabian.core.usecases.entity.UserEntity
-import ingfabian.userpost.data.frameworks.PostDB
-import ingfabian.userpost.data.frameworks.UserDB
+import com.example.data.frameworks.PostDB
+import com.example.data.frameworks.UserDB
 
 class MapperPostData {
 
