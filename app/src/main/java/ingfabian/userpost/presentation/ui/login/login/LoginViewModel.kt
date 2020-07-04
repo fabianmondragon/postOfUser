@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import ingfabian.core.usecases.entity.UserEntity
-import com.example.data.RoomUser
 import ingfabian.userpost.presentation.ui.login.model.UserPresentation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -7,9 +7,11 @@ import androidx.lifecycle.ViewModelProviders
 import ingfabian.userpost.R
 import ingfabian.userpost.databinding.ActivityMainBinding
 import ingfabian.userpost.presentation.ui.post.PostViewModel
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
+    @Inject
     lateinit var postViewModel: PostViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,9 +22,6 @@ class MainActivity : AppCompatActivity() {
 
         postViewModel = ViewModelProviders.of(this)[PostViewModel::class.java]
         binding.postViewModel = postViewModel
-
-
-
 
     }
 }

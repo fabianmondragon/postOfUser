@@ -1,12 +1,12 @@
 package ingfabian.userpost.presentation.ui.login.registration
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
-import com.example.data.repository.UserRepositoryImpl
+import androidx.lifecycle.ViewModel
 import ingfabian.core.usecases.AddUser
 import ingfabian.core.usecases.entity.UserEntity
-import com.example.data.RoomUser
+import ingfabian.userpost.PostApplication
+import ingfabian.userpost.di.DaggerApplicationComponent
 import ingfabian.userpost.presentation.ConstantPresentation
 import ingfabian.userpost.presentation.MapperPostPresentation
 import ingfabian.userpost.presentation.ui.login.model.RespondPresentation
@@ -14,34 +14,45 @@ import ingfabian.userpost.presentation.ui.login.model.UserPresentation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RegistrationViewModel (application: Application) : AndroidViewModel(application) {
+class RegistrationViewModel @Inject constructor() : ViewModel() {
 
+    @Inject
+    lateinit var addUser: AddUser
+    lateinit var  context: Context
     var userPresentation = UserPresentation()
     val mapperPostPresentation = MapperPostPresentation()
-    val addUser = AddUser(UserRepositoryImpl())
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
-
     val result = MutableLiveData<RespondPresentation>()
+    init {
+        (PostApplication.getContext().applicationContext as PostApplication).appComponent.inject(this)
+    }
 
-    fun register (){
-     
+    fun register() {
+
         coroutineScope.launch {
-            addUser.addUser(userEntity = UserEntity(name="usuario", userName = "mondra10", password = "123", email = "mondra10@gmail.com" ))
+            addUser.addUser(
+                userEntity = UserEntity(
+                    name = "usuario",
+                    userName = "mondra10",
+                    password = "123",
+                    email = "mondra10@gmail.com"
+                )
+            )
         }
 
-       /* coroutineScope.launch {
-            val userEntity =
-                mapperPostPresentation.convertUserFromPresentationToDomain(userPresentation)
-            val l = addUser.addUser(userEntity)
-            if (l != -1L ){
-                result.postValue(RespondPresentation(ConstantPresentation.LOGIN_TRANSACTION_MSG_SUCCESS, ConstantPresentation.RESULT_SUCCESS_TRANSACTION,ConstantPresentation.LOGIN_TRANSACTION))
-            } else {
-                result.postValue(RespondPresentation(ConstantPresentation.LOGIN_TRANSACTION_MSG_ERROR, ConstantPresentation.RESULT_SUCCESS_TRANSACTION,ConstantPresentation.LOGIN_TRANSACTION))
-            }
+        /* coroutineScope.launch {
+             val userEntity =
+                 mapperPostPresentation.convertUserFromPresentationToDomain(userPresentation)
+             val l = addUser.addUser(userEntity)
+             if (l != -1L ){
+                 result.postValue(RespondPresentation(ConstantPresentation.LOGIN_TRANSACTION_MSG_SUCCESS, ConstantPresentation.RESULT_SUCCESS_TRANSACTION,ConstantPresentation.LOGIN_TRANSACTION))
+             } else {
+                 result.postValue(RespondPresentation(ConstantPresentation.LOGIN_TRANSACTION_MSG_ERROR, ConstantPresentation.RESULT_SUCCESS_TRANSACTION,ConstantPresentation.LOGIN_TRANSACTION))
+             }
 
-        }*/
-
+         }*/
 
 
         /*if (userPresentation.validateEmptyField( userPresentation)) {
@@ -82,19 +93,19 @@ class RegistrationViewModel (application: Application) : AndroidViewModel(applic
         }*/
     }
 
-    fun onNameTextChange (s: CharSequence,start: Int,before : Int, count :Int){
-        if (count==0)
+    fun onNameTextChange(s: CharSequence, start: Int, before: Int, count: Int) {
+        if (count == 0)
             userPresentation.nameError.set(ConstantPresentation.EMPTY_FIELD)
     }
 
-    fun onPasswordChange (s: CharSequence,start: Int,before : Int, count :Int){
-        if (s.length > 3){
+    fun onPasswordChange(s: CharSequence, start: Int, before: Int, count: Int) {
+        if (s.length > 3) {
             userPresentation.validatePassword(s, userPresentation)
         }
     }
 
-    fun onPasswordAgainChange (s: CharSequence,start: Int,before : Int, count :Int){
-        if (s.length>3) {
+    fun onPasswordAgainChange(s: CharSequence, start: Int, before: Int, count: Int) {
+        if (s.length > 3) {
             userPresentation.validatePasswordAgain(s, userPresentation)
         }
     }
