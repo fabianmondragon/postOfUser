@@ -3,10 +3,10 @@ package ingfabian.userpost.presentation.ui.login.registration
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import ingfabian.core.Result
 import ingfabian.core.usecases.AddUser
 import ingfabian.core.usecases.entity.UserEntity
 import ingfabian.userpost.PostApplication
-import ingfabian.userpost.di.DaggerApplicationComponent
 import ingfabian.userpost.presentation.ConstantPresentation
 import ingfabian.userpost.presentation.MapperPostPresentation
 import ingfabian.userpost.presentation.ui.login.model.RespondPresentation
@@ -20,78 +20,104 @@ class RegistrationViewModel @Inject constructor() : ViewModel() {
 
     @Inject
     lateinit var addUser: AddUser
-    lateinit var  context: Context
+    lateinit var context: Context
     var userPresentation = UserPresentation()
     val mapperPostPresentation = MapperPostPresentation()
-    private val coroutineScope = CoroutineScope(Dispatchers.IO)
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
     val result = MutableLiveData<RespondPresentation>()
+
     init {
-        (PostApplication.getContext().applicationContext as PostApplication).appComponent.inject(this)
+        (PostApplication.getContext().applicationContext as PostApplication).appComponent.inject(
+            this
+        )
     }
 
     fun register() {
 
         coroutineScope.launch {
-            addUser.addUser(
+            val respond = addUser.addUser(
                 userEntity = UserEntity(
-                    name = "usuario",
-                    userName = "mondra10",
-                    password = "123",
-                    email = "mondra10@gmail.com"
+                    userName = "mondra6",
+                    password = "verylongpassword",
+                    email = "tester6@gmail.com",
+                    displayName = "Jhonny Testeer3"
                 )
             )
+            when (respond.status) {
+                Result.Status.SUCCESS -> result.postValue(
+                    RespondPresentation(
+                        ConstantPresentation.LOGIN_TRANSACTION_MSG_SUCCESS,
+                        ConstantPresentation.RESULT_SUCCESS_TRANSACTION,
+                        ConstantPresentation.LOGIN_TRANSACTION
+                    )
+                )
+                Result.Status.ERROR -> result.postValue(
+                    RespondPresentation(
+                        ConstantPresentation.LOGIN_TRANSACTION_MSG_ERROR,
+                        ConstantPresentation.RESULT_SUCCESS_TRANSACTION,
+                        ConstantPresentation.LOGIN_TRANSACTION
+                    )
+                )
+
+
+            }
+
+
         }
 
-        /* coroutineScope.launch {
-             val userEntity =
-                 mapperPostPresentation.convertUserFromPresentationToDomain(userPresentation)
-             val l = addUser.addUser(userEntity)
-             if (l != -1L ){
-                 result.postValue(RespondPresentation(ConstantPresentation.LOGIN_TRANSACTION_MSG_SUCCESS, ConstantPresentation.RESULT_SUCCESS_TRANSACTION,ConstantPresentation.LOGIN_TRANSACTION))
-             } else {
-                 result.postValue(RespondPresentation(ConstantPresentation.LOGIN_TRANSACTION_MSG_ERROR, ConstantPresentation.RESULT_SUCCESS_TRANSACTION,ConstantPresentation.LOGIN_TRANSACTION))
-             }
 
-         }*/
+    }
 
+    /* coroutineScope.launch {
+         val userEntity =
+             mapperPostPresentation.convertUserFromPresentationToDomain(userPresentation)
+         val l = addUser.addUser(userEntity)
+         if (l != -1L ){
+             result.postValue(RespondPresentation(ConstantPresentation.LOGIN_TRANSACTION_MSG_SUCCESS, ConstantPresentation.RESULT_SUCCESS_TRANSACTION,ConstantPresentation.LOGIN_TRANSACTION))
+         } else {
+             result.postValue(RespondPresentation(ConstantPresentation.LOGIN_TRANSACTION_MSG_ERROR, ConstantPresentation.RESULT_SUCCESS_TRANSACTION,ConstantPresentation.LOGIN_TRANSACTION))
+         }
 
-        /*if (userPresentation.validateEmptyField( userPresentation)) {
-                emit(Resource.loading(data = null))
-                try {
-                    val userEntity =
-                        mapperPostPresentation.convertUserFromPresentationToDomain(userPresentation)
-                    emit(Resource.success(data = addUser.addUser(userEntity)))
-                } catch (exception: Exception) {
-                    emit(
-                        Resource.error(
-                            data = null,
-                            message = exception.message ?: "Error Occurred!"
-                        )
-                    )
-                }
-            }*/
-
-        /*if (userPresentation.validateEmptyField (userPresentation)) {
+     }*/
 
 
-
-            /*
-            coroutineScope.launch {
+    /*if (userPresentation.validateEmptyField( userPresentation)) {
+            emit(Resource.loading(data = null))
+            try {
                 val userEntity =
                     mapperPostPresentation.convertUserFromPresentationToDomain(userPresentation)
-                val l = addUser.addUser(userEntity)
-                if (l != -1L ){
-                    result.postValue(RespondPresentation(ConstantPresentation.LOGIN_TRANSACTION_MSG_SUCCESS, ConstantPresentation.RESULT_SUCCESS_TRANSACTION,ConstantPresentation.LOGIN_TRANSACTION))
-                } else {
-                    result.postValue(RespondPresentation(ConstantPresentation.LOGIN_TRANSACTION_MSG_ERROR, ConstantPresentation.RESULT_SUCCESS_TRANSACTION,ConstantPresentation.LOGIN_TRANSACTION))
-                }
+                emit(Resource.success(data = addUser.addUser(userEntity)))
+            } catch (exception: Exception) {
+                emit(
+                    Resource.error(
+                        data = null,
+                        message = exception.message ?: "Error Occurred!"
+                    )
+                )
+            }
+        }*/
 
-            }*/
-        }
-        else {
+    /*if (userPresentation.validateEmptyField (userPresentation)) {
+
+
+
+        /*
+        coroutineScope.launch {
+            val userEntity =
+                mapperPostPresentation.convertUserFromPresentationToDomain(userPresentation)
+            val l = addUser.addUser(userEntity)
+            if (l != -1L ){
+                result.postValue(RespondPresentation(ConstantPresentation.LOGIN_TRANSACTION_MSG_SUCCESS, ConstantPresentation.RESULT_SUCCESS_TRANSACTION,ConstantPresentation.LOGIN_TRANSACTION))
+            } else {
+                result.postValue(RespondPresentation(ConstantPresentation.LOGIN_TRANSACTION_MSG_ERROR, ConstantPresentation.RESULT_SUCCESS_TRANSACTION,ConstantPresentation.LOGIN_TRANSACTION))
+            }
 
         }*/
     }
+    else {
+
+    }*/
+
 
     fun onNameTextChange(s: CharSequence, start: Int, before: Int, count: Int) {
         if (count == 0)
@@ -109,7 +135,6 @@ class RegistrationViewModel @Inject constructor() : ViewModel() {
             userPresentation.validatePasswordAgain(s, userPresentation)
         }
     }
-
 
 
 }

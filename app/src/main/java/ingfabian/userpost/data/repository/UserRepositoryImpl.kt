@@ -7,21 +7,36 @@ import ingfabian.core.models.JWToken
 import ingfabian.core.repository.UserRepository
 import ingfabian.core.usecases.entity.UserEntity
 import ingfabian.userpost.data.network.UserApiHelper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class UserRepositoryImpl @Inject constructor(val localDataSourceUser: LocalDataSourceUser, val remoteDataSource: RemoteDataSource): UserRepository {
+class UserRepositoryImpl @Inject constructor(
+    val localDataSourceUser: LocalDataSourceUser,
+    val remoteDataSource: RemoteDataSource
+) : UserRepository {
 
 
-    override suspend fun addUser(userEntity: UserEntity): Result<JWToken?> {
-        val userApiHelper: UserApiHelper
-        //remoteDataSource = RemoteDataSourceImpl(userApiHelper)
-        val result = remoteDataSource.registerUser(userEntity)
-        return when (result.status) {
-            Result.Status.SUCCESS -> success(result.data)
-            Result.Status.ERROR -> error("", null)
-            else -> error("", null)
+    override suspend fun addUser(userEntity: UserEntity) =
+        withContext(Dispatchers.IO) {
+            return@withContext remoteDataSource.registerUser(userEntity)
+           /* try {
+
+                val userApiHelper: UserApiHelper
+                //remoteDataSource = RemoteDataSourceImpl(userApiHelper)
+                val result = remoteDataSource.registerUser(userEntity)
+                return@withContext when (result.status) {
+                    Result.Status.SUCCESS -> success(result.data)
+                    Result.Status.ERROR -> error(result.message!!, null)
+                    else -> error("", null)
+                }
+            } catch (exception: Exception) {
+                return@withContext error("", null)
+            }
+            */
+
+
         }
-    }
 
     override suspend fun getUser(userEntity: UserEntity): UserEntity? {
         return localDataSourceUser.getUser(userEntity.userName, userEntity.password)
