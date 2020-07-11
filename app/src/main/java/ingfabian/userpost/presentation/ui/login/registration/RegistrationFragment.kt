@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import ingfabian.userpost.PostApplication
 import ingfabian.userpost.R
 import ingfabian.userpost.databinding.FragmentRegisterBinding
@@ -56,19 +57,17 @@ class RegistrationFragment : Fragment() {
         registrationViewModel.result.observe(viewLifecycleOwner, Observer {
              if (it.code == ConstantPresentation.RESULT_SUCCESS_TRANSACTION){
                  Toast.makeText(this.context, it.msg, Toast.LENGTH_LONG).show()
-                 val newFragment = LoginFragment()
-                 val transaction = fragmentManager?.beginTransaction()?.apply {
-
-                     replace(R.id.nav_host_fragment, newFragment)
-                     addToBackStack(null)
-                 }
-                 transaction?.commit()
+                transitionAnotherFragment()
              }
              else {
                  Toast.makeText(this.context, it.msg, Toast.LENGTH_LONG).show()
              }
          })
 
+    }
+    fun transitionAnotherFragment () {
+        val navController = findNavController()
+        navController.navigate( R.id.navigation_home)
     }
 
 
