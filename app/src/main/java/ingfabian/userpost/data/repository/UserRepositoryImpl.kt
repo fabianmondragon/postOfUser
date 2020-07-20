@@ -6,7 +6,6 @@ import ingfabian.core.datasource.RemoteDataSource
 import ingfabian.core.models.JWToken
 import ingfabian.core.repository.UserRepository
 import ingfabian.core.usecases.entity.UserEntity
-import ingfabian.userpost.data.network.UserApiHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

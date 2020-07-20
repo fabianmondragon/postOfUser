@@ -1,7 +1,7 @@
 package ingfabian.userpost.data.network
 
 import ingfabian.core.models.JWToken
-import ingfabian.userpost.BaseResponse
+import ingfabian.core.models.BaseResponse
 import retrofit2.Response
 import retrofit2.http.*
 import javax.inject.Singleton

@@ -1,17 +1,16 @@
 package ingfabian.userpost.data.network
 
 import ingfabian.core.Result
-import ingfabian.userpost.BaseResponse
 import retrofit2.Response
 
 abstract class BaseDataSource {
 
-    protected suspend fun <T> getResult( call: suspend () -> Response<BaseResponse<T>>): Result<T> {
+    protected suspend fun <T> getResult( call: suspend () -> Response<T>): Result<T> {
         try {
             val response = call()
             if (response.isSuccessful) {
                 val body = response.body()
-                if (body != null) return Result.success(body.results)
+                if (body != null) return Result.success(response.body())
             }
             return error(" ${response.code()} ${response.message()}")
         } catch (e: Exception) {

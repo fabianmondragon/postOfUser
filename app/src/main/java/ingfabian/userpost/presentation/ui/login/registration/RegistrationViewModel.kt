@@ -4,11 +4,12 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ingfabian.core.Result
+import ingfabian.core.models.BaseResponse
+import ingfabian.core.models.JWToken
 import ingfabian.core.usecases.AddUser
 import ingfabian.core.usecases.entity.UserEntity
 import ingfabian.userpost.PostApplication
 import ingfabian.userpost.presentation.ConstantPresentation
-import ingfabian.userpost.presentation.MapperPostPresentation
 import ingfabian.userpost.presentation.ui.login.model.RespondPresentation
 import ingfabian.userpost.presentation.ui.login.model.UserPresentation
 import kotlinx.coroutines.CoroutineScope
@@ -22,9 +23,10 @@ class RegistrationViewModel @Inject constructor() : ViewModel() {
     lateinit var addUser: AddUser
     lateinit var context: Context
     var userPresentation = UserPresentation()
-    val mapperPostPresentation = MapperPostPresentation()
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
     val result = MutableLiveData<RespondPresentation>()
+
+    val jwtManager: JWTManager = JWTManager()
 
     init {
         (PostApplication.getContext().applicationContext as PostApplication).appComponent.inject(
@@ -43,14 +45,21 @@ class RegistrationViewModel @Inject constructor() : ViewModel() {
                     displayName = "Jhonny Testeer3"
                 )
             )
+
             when (respond.status) {
-                Result.Status.SUCCESS -> result.postValue(
-                    RespondPresentation(
-                        ConstantPresentation.LOGIN_TRANSACTION_MSG_SUCCESS,
-                        ConstantPresentation.RESULT_SUCCESS_TRANSACTION,
-                        ConstantPresentation.LOGIN_TRANSACTION
+                Result.Status.SUCCESS -> {
+                    val baseResponse = respond.data as BaseResponse<JWToken>
+                    if (baseResponse.customCode == ConstantPresentation.RESULT_SUCCESS_TRANSACTION){
+//                        jwtManager.saveJWT(baseResponse.response)
+                    }
+                    result.postValue(
+                        RespondPresentation(
+                            ConstantPresentation.LOGIN_TRANSACTION_MSG_SUCCESS,
+                            ConstantPresentation.RESULT_SUCCESS_TRANSACTION,
+                            ConstantPresentation.LOGIN_TRANSACTION
+                        )
                     )
-                )
+                }
                 Result.Status.ERROR -> result.postValue(
                     RespondPresentation(
                         ConstantPresentation.LOGIN_TRANSACTION_MSG_ERROR,
@@ -58,14 +67,8 @@ class RegistrationViewModel @Inject constructor() : ViewModel() {
                         ConstantPresentation.LOGIN_TRANSACTION
                     )
                 )
-
-
             }
-
-
         }
-
-
     }
 
     /* coroutineScope.launch {

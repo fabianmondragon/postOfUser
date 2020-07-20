@@ -1,7 +1,9 @@
 package ingfabian.core
 
+import ingfabian.core.models.BaseResponse
 
-data class Result<out T>(val status: Status, val data: T?, val message: String?) {
+
+data class Result<T>(val status: Status, val data: Any?, val message: String?) {
 
     enum class Status {
         SUCCESS,
@@ -10,7 +12,7 @@ data class Result<out T>(val status: Status, val data: T?, val message: String?)
     }
 
     companion object {
-        fun <T> success(data: T): Result<T> {
+        fun <T> success(data: Any?): Result<T> {
             return Result(
                 Status.SUCCESS,
                 data,
@@ -18,7 +20,7 @@ data class Result<out T>(val status: Status, val data: T?, val message: String?)
             )
         }
 
-        fun <T> error(message: String, data: T? = null): Result<T> {
+        fun <T> error(message: String, data: Any? = null): Result<T> {
             return Result(
                 Status.ERROR,
                 data,
@@ -26,7 +28,7 @@ data class Result<out T>(val status: Status, val data: T?, val message: String?)
             )
         }
 
-        fun <T> loading(data: T? = null): Result<T> {
+        fun <T> loading( data: Any? = null): Result<T> {
             return Result(
                 Status.LOADING,
                 data,

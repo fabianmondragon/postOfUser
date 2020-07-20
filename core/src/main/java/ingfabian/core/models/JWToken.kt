@@ -1,5 +1,5 @@
 package ingfabian.core.models
 
-class JWToken (
-                val image: String,
+class JWToken  (
+                val token: String,
                 val userId: String)
