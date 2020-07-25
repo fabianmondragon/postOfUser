@@ -19,5 +19,9 @@ abstract class ViewModelModule {
     @ViewModelKey(RegistrationViewModel::class)
     internal abstract fun registrationViewModel(viewModel: RegistrationViewModel): ViewModel
 
-    //Add more ViewModels here
+    @Binds
+    @IntoMap
+    @ViewModelKey(LoginViewModel::class)
+    internal abstract fun provideLoginViewModel(viewModel: LoginViewModel): ViewModel
+
 }

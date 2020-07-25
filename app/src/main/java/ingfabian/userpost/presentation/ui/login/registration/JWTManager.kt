@@ -21,5 +21,16 @@ class JWTManager  {
         }
     }
 
+    fun saveJWT (token: String, userName: String){
+        val context = PostApplication.getContext().applicationContext
+        val sharedPref = context.getSharedPreferences(
+            context.getString(R.string.preference_file_key), Context.MODE_PRIVATE) ?: return
+        with (sharedPref.edit()) {
+            putString(context.getString(R.string.jwt_token), token)
+            putString (context.getString(R.string.jwt_userId), userName)
+            commit()
+        }
+    }
+
 
 }

@@ -19,20 +19,20 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun addUser(userEntity: UserEntity) =
         withContext(Dispatchers.IO) {
             return@withContext remoteDataSource.registerUser(userEntity)
-           /* try {
+            /* try {
 
-                val userApiHelper: UserApiHelper
-                //remoteDataSource = RemoteDataSourceImpl(userApiHelper)
-                val result = remoteDataSource.registerUser(userEntity)
-                return@withContext when (result.status) {
-                    Result.Status.SUCCESS -> success(result.data)
-                    Result.Status.ERROR -> error(result.message!!, null)
-                    else -> error("", null)
-                }
-            } catch (exception: Exception) {
-                return@withContext error("", null)
-            }
-            */
+                 val userApiHelper: UserApiHelper
+                 //remoteDataSource = RemoteDataSourceImpl(userApiHelper)
+                 val result = remoteDataSource.registerUser(userEntity)
+                 return@withContext when (result.status) {
+                     Result.Status.SUCCESS -> success(result.data)
+                     Result.Status.ERROR -> error(result.message!!, null)
+                     else -> error("", null)
+                 }
+             } catch (exception: Exception) {
+                 return@withContext error("", null)
+             }
+             */
 
 
         }
@@ -40,6 +40,15 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun getUser(userEntity: UserEntity): UserEntity? {
         return localDataSourceUser.getUser(userEntity.userName, userEntity.password)
     }
+
+    override suspend fun login(userEntity: UserEntity) =
+        withContext(Dispatchers.IO) {
+            return@withContext remoteDataSource.login(
+                username = userEntity.userName,
+                password = userEntity.password
+            )
+        }
+
 
     fun <T> success(data: T): Result<T> {
         return Result(

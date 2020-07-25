@@ -2,6 +2,8 @@ package ingfabian.userpost.data.network
 
 import ingfabian.core.models.JWToken
 import ingfabian.core.models.BaseResponse
+import ingfabian.core.models.RegisterResponse
+import ingfabian.core.models.UserResponse
 import retrofit2.Response
 import retrofit2.http.*
 import javax.inject.Singleton
@@ -23,7 +25,16 @@ interface UserServicee {
         @Field("password") password: String,
         @Field("userName") userName: String
 
-    ): Response<BaseResponse<JWToken>>
+    ): Response<BaseResponse<RegisterResponse>>
+
+    @FormUrlEncoded
+    @POST("v1/users/login")
+    suspend fun login(
+        @Field("userName") userName: String,
+        @Field("password") password: String
+    ): Response<BaseResponse<UserResponse>>
+
+
 
     @GET("users")
     suspend fun getUsers(): List<UserNetwork>
