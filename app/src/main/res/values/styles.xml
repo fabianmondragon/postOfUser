@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Button" parent="TextAppearance.AppCompat.Button">
+        <!-- Customize your theme here. -->
+        <item name="android:colorBackground">@color/colorAccent</item>
+        <item name = "android:background">@color/colorAccent</item>
+
+    </style>
 </resources>
