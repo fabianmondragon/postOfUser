@@ -11,6 +11,7 @@ import ingfabian.userpost.R
 import ingfabian.userpost.presentation.ui.custom_views.CardPromotionalCoach
 import ingfabian.userpost.presentation.ui.custom_views.CoachCardPresentation
 import ingfabian.userpost.presentation.ui.custom_views.CoachPromotionalAdapter
+import ingfabian.userpost.presentation.ui.custom_views.ViewHolderItem
 
 class HomeActivity : AppCompatActivity() {
 
@@ -21,13 +22,15 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         viewPager2 = findViewById(R.id.viewPagerPromotional)
 
-        val listOfCoach  = mutableListOf(
-           CoachCardPresentation ("Fabian Mondragon", "Android", 4.5f),
-            CoachCardPresentation ("Alejandro Mondragon", "iOS", 4.5f),
-            CoachCardPresentation ("Jhonatan Ordoñes", "iONIC", 4.5f),
-            CoachCardPresentation ("Robert Erazo", "Flutter", 4.5f),
-            CoachCardPresentation ("Lady Saches", "Reac Native", 4.5f)
-        )
+
+
+
+        var listOfCoach = mutableListOf<ViewHolderItem>( CoachCardPresentation (1, "Fabian Mondragon", "Android", 4.5f),
+            CoachCardPresentation (1, "Alejandro Mondragon", "iOS", 4.5f),
+            CoachCardPresentation (1, "Jhonatan Ordoñes", "iONIC", 4.5f),
+            CoachCardPresentation (1, "Robert Erazo", "Flutter", 4.5f),
+            CoachCardPresentation (1, "Lady Saches", "Reac Native", 4.5f))
+
         adapter = CoachPromotionalAdapter(listOfCoach)
         viewPager2.adapter = adapter
         setConfigViewPager ()
@@ -57,4 +60,6 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
+
+
 }
