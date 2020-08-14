@@ -6,5 +6,5 @@ import ingfabian.core.models.PromotionalCoachResponse
 
 interface CoachRemoteDataSource {
 
-    suspend fun getPromotionalCoach (language:String, tecnology: String): Result<BaseResponse<PromotionalCoachResponse>>
+    suspend fun getPromotionalCoach (language:String, tecnology: String): Result<BaseResponse<PromotionalCoachResponse>>?
 }

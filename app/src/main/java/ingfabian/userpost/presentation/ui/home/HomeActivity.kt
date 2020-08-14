@@ -33,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
 
         homeViewModel = ViewModelProviders.of(this, viewModelFactory)[HomeViewModel::class.java]
 
-        homeViewModel.loadPromotionalCoach()
+        //homeViewModel.loadPromotionalCoach()
 
 
 

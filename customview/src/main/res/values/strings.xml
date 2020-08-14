@@ -1,0 +1,10 @@
+<resources>
+    <string-array
+        name="info_step_registration">
+        <item>Ingrese su usuario y password</item>
+        <item>Seleccionee los temas en los que usted podría dar un Coaching</item>
+        <item>Seleccione entre Bajo, Medio y Alto según sus conocimientos</item>
+        <item>Bienvenido</item>
+    </string-array>
+
+</resources>

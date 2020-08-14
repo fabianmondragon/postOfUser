@@ -8,5 +8,5 @@ import ingfabian.core.usecases.entity.CoachEntity
 
 interface CoachRepository {
 
-    suspend fun getPromotionalCoach (promotionalCoachRequest: PromotionalCoachRequest): Result<BaseResponse<PromotionalCoachResponse>>
+    suspend fun getPromotionalCoach (promotionalCoachRequest: PromotionalCoachRequest): Result<BaseResponse<PromotionalCoachResponse>>?
 }

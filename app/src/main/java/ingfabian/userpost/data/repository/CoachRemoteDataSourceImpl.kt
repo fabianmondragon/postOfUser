@@ -9,7 +9,8 @@ class CoachRemoteDataSourceImpl : CoachRemoteDataSource {
     override suspend fun getPromotionalCoach(
         language: String,
         tecnology: String
-    ): Result<BaseResponse<PromotionalCoachResponse>> {
+    ): Result<BaseResponse<PromotionalCoachResponse>>? {
+        return null
 
     }
 }

@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
 
-    val getAllPromotionalCoach = GetAllPromotionalCoach()
+    /*val getAllPromotionalCoach = GetAllPromotionalCoach()
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
 
     fun loadPromotionalCoach() {
@@ -32,5 +32,5 @@ class HomeViewModel : ViewModel() {
 
 
 
-    }
+    }*/
 }
