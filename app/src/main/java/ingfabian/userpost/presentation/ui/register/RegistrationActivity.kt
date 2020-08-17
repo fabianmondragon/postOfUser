@@ -13,7 +13,7 @@ class RegistrationActivity : StepperActivity() {
         setSteps(
             arrayListOf(
                 BasicRegistrationFragment.newInstance("hola", "hola2"),
-                BasicRegistrationFragment.newInstance("hola2", "hola2")
+                TopicsFragment.newInstance("hola2", "hola2")
             ), DataLoadStepperManager.REGISTER
         )
 
