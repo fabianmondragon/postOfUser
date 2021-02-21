@@ -8,10 +8,29 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="Button" parent="TextAppearance.AppCompat.Button">
-        <!-- Customize your theme here. -->
-        <item name="android:colorBackground">@color/colorAccent</item>
-        <item name = "android:background">@color/colorAccent</item>
-
+    <style name="EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/title</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:backgroundTint">@color/colorAccent</item>
+        <item name="android:textColorHint">@color/title</item>
     </style>
+
+    <style name="CardViewWithBorder" parent="Widget.MaterialComponents.CardView">
+        <item name="android:background">@drawable/shape_rectangle_stroke</item>
+    </style>
+
+    <!-- Text -->
+    <style name="Text.Medium.SubTitle" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/title</item>
+        <item name="android:textSize">@dimen/textViewMedium</item>
+        <item name="android:textStyle"></item>
+    </style>
+
+    <style name="Text.Medium.SubTitle.Blue" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">@dimen/textViewMedium</item>
+        <item name="android:textStyle"></item>
+    </style>
+
 </resources>

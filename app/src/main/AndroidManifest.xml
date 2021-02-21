@@ -14,7 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".presentation.ui.register.RegistrationActivity" android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+
+        <activity android:name=".presentation.ui.register.RegistrationActivity"></activity>
+        <activity
+            android:name=".presentation.ui.loginV2.LoginV2Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,9 +41,7 @@
             android:label="@string/title_activity_login" />
         <activity android:name=".presentation.ui.register.RegisterActivity" />
         <activity android:name=".presentation.MainActivity" />
-        <activity android:name=".presentation.ui.login.LoginActivity">
-
-        </activity>
+        <activity android:name=".presentation.ui.login.LoginActivity"></activity>
     </application>
 
 </manifest>
