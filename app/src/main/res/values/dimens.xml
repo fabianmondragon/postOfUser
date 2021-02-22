@@ -9,5 +9,21 @@
 
 
 
+    <!--Size TextView-->
+    <dimen name="textViewHigh">20sp</dimen>
+    <dimen name="textViewMedium">16sp</dimen>
+    <dimen name="textViewLittle">14sp</dimen>
+
+    <!--Margin Size -->
+    <dimen name="margin_left_extreme">50dp</dimen>
+    <dimen name="margin_left_high">20dp</dimen>
+    <dimen name="margin_left_medium">18dp</dimen>
+    <dimen name="margin_left_normal">16dp</dimen>
+    <dimen name="margin_left_reduce">10dp</dimen>
+
+    <!--Padding -->
+    <dimen name="paddingHigh">20sp</dimen>
+    <dimen name="paddingMedium">16sp</dimen>
+    <dimen name="paddingSmall">14sp</dimen>
 
 </resources>

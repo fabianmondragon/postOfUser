@@ -13,4 +13,16 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!--Login Activity-->
+    <string name="enter_user_name_password_label">Enter User name and password</string>
+    <string name="user_name_field">User Name</string>
+    <string name="password_field">Password</string>
+    <string name="forget_key_label">Recovery password</string>
+    <string name="register_label">Register</string>
+    <string name="expert_btn">Expert</string>
+    <string name="learner_btn">Learner</string>
+    <string name="hi_welcome_label">Hi!...Welcome</string>
+
 </resources>
